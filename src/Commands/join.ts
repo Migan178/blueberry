@@ -39,7 +39,7 @@ class JoinCommmand extends Command {
               type: ComponentType.Button,
               label: '동의',
               style: ButtonStyle.Success,
-              customId: 'blueberry-join$accept',
+              customId: `blueberry-join$accept@${msg.author.id}`,
             },
           ],
         },

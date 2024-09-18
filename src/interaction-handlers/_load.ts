@@ -1,1 +1,2 @@
 import './deleteLearn'
+import './join'
