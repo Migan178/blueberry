@@ -48,7 +48,7 @@ class JoinCommmand extends Command {
   }
 }
 
-container.stores.loadPiece({
+void container.stores.loadPiece({
   piece: JoinCommmand,
   name: 'join',
   store: 'commands',

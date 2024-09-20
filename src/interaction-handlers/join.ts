@@ -60,7 +60,7 @@ class JoinHandler extends InteractionHandler {
   }
 }
 
-container.stores.loadPiece({
+void container.stores.loadPiece({
   piece: JoinHandler,
   name: 'join',
   store: 'interaction-handlers',
