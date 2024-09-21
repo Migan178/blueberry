@@ -75,9 +75,7 @@ declare module '@sapphire/framework' {
     lastUpdated: Date
     embedColor: number
   }
-}
 
-declare module '@sapphire/framework' {
   interface DetailedDescriptionCommandObject {
     usage: string
     examples?: string[]
