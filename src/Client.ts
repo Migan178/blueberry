@@ -9,6 +9,7 @@ const config = new Config()
 
 // Load pieces
 import './interaction-handlers/_load'
+import './preconditions/_load'
 import './listeners/_load'
 import './Commands/_load'
 
@@ -79,5 +80,9 @@ declare module '@sapphire/framework' {
   interface DetailedDescriptionCommandObject {
     usage: string
     examples?: string[]
+  }
+
+  interface Preconditions {
+    IsJoined: never
   }
 }

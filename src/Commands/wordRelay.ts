@@ -10,6 +10,7 @@ import { WordRelay } from '../modules'
   detailedDescription: {
     usage: '베리야 끝말잇기',
   },
+  preconditions: ['IsJoined'],
 })
 class WordRelayCommand extends Command {
   public async messageRun(msg: Message<true>) {

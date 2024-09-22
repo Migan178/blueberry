@@ -9,6 +9,7 @@ import { ApplyOptions } from '@sapphire/decorators'
   detailedDescription: {
     usage: '베리야 학습데이터량',
   },
+  preconditions: ['IsJoined'],
 })
 class LearnDataCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {

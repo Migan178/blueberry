@@ -22,6 +22,7 @@ import {
     usage: '베리야 삭제 (삭제할 단어)',
     examples: ['베리야 삭제 베리'],
   },
+  preconditions: ['IsJoined'],
 })
 class DeleteLearnCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
