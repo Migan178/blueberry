@@ -32,11 +32,12 @@ export class UserTable implements BaseTable<UserData, Snowflake> {
     })
   }
 
-  // TODO: 둘다 아무런 값도 없을때 에러 띄우는 등의 조치
+  // TODO: 아무런 값도 없을때 에러 띄우는 등의 조치
   public async update(data: {
     user_id: Snowflake
     money?: bigint
     blocked?: boolean
+    block_reason?: string
   }): Promise<void> {
     const db = await this._database.getConnection()
 
@@ -52,6 +53,13 @@ export class UserTable implements BaseTable<UserData, Snowflake> {
         await db.execute(
           `UPDATE ${this.name} SET blocked = ? WHERE user_id = ?;`,
           [data.blocked, data.user_id],
+        )
+      })
+    else if (data.block_reason)
+      await run(db, async () => {
+        await db.execute(
+          `UPDATE ${this.name} SET block_reason = ? WHERE user_id = ?;`,
+          [data.block_reason, data.user_id],
         )
       })
   }

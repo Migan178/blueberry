@@ -6,6 +6,7 @@ import { ApplyOptions } from '@sapphire/decorators'
   name: '가입',
   aliases: ['회원가입'],
   description: '블루베리의 회원가입입니다.',
+  preconditions: ['IsBlocked'],
 })
 class JoinCommmand extends Command {
   public async messageRun(msg: Message) {

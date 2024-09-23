@@ -14,7 +14,7 @@ import { ApplyOptions } from '@sapphire/decorators'
       '베리야 배워 미간은_누구야? 이봇의_개발자요',
     ],
   },
-  preconditions: ['IsJoined'],
+  preconditions: ['IsJoined', 'IsBlocked'],
 })
 class LearnCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {

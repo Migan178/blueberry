@@ -9,7 +9,7 @@ import { ApplyOptions } from '@sapphire/decorators'
   detailedDescription: {
     usage: '베리야 리스트',
   },
-  preconditions: ['IsJoined'],
+  preconditions: ['IsJoined', 'IsBlocked'],
 })
 class ListCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
