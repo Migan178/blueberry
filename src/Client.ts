@@ -22,7 +22,7 @@ container.version = version
 container.database = new PrismaClient()
 container.dokdoAliases = ['dokdo', 'dok', 'Dokdo', 'Dok', '테스트']
 container.chatBot = new ChatBot(container.database)
-container.lastUpdated = new Date('2024-09-28')
+container.lastUpdated = new Date('2024-09-29')
 
 if (release.startsWith('e')) {
   container.channel = 'EXPERIMENTAL'

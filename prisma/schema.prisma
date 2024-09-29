@@ -33,3 +33,8 @@ model statement {
   search_in_response_to String    @default("") @db.VarChar(255)
   persona               String    @default("") @db.VarChar(50)
 }
+
+model preview_channel {
+  user_id String @id @db.VarChar(255)
+  channel String @default("DEV") @db.VarChar(255)
+}

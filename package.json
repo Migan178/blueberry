@@ -1,6 +1,6 @@
 {
   "name": "muffinbot",
-  "version": "4.0.0-pudding.d240928e",
+  "version": "4.0.0-pudding.experimental_preview_channel_change.1",
   "main": "dist/index.js",
   "private": true,
   "dependencies": {
