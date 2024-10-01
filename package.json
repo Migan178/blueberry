@@ -1,48 +1,53 @@
 {
   "name": "blueberry",
-  "version": "1.0.0-blueberry.d240908a",
+  "version": "0.0.0-hydrogen.d241001a",
   "description": "Public discord bot based Muffin-NOT-Ai",
   "main": "dist/index.js",
   "private": true,
   "dependencies": {
+    "@prisma/client": "^5.20.0",
     "@sapphire/decorators": "^6.1.0",
     "@sapphire/discord.js-utilities": "^7.3.0",
     "@sapphire/framework": "^5.2.1",
     "@sapphire/pieces": "^4.3.1",
     "@sapphire/utilities": "^3.17.0",
     "axios": "^1.7.3",
-    "discord-api-types": "^0.37.93",
-    "discord.js": "^14.15.3",
-    "dokdo": "^0.6.2",
-    "mysql2": "^3.11.0",
+    "discord-api-types": "^0.37.101",
+    "discord.js": "^14.16.3",
+    "dokdo": "^1.0.1",
+    "dotenv": "^16.4.5",
     "semver": "^7.6.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.8.0",
+    "@eslint/js": "^9.11.1",
     "@migan/prettier-config": "^1.2.0",
-    "@types/node": "^20.14.12",
-    "@types/semver": "^7",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.17.0",
+    "@types/node": "^22.7.4",
+    "@types/semver": "^7.5.8",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@yarnpkg/pnpify": "^4.1.2",
     "cross-env": "^7.0.3",
-    "eslint": "^9.8.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.8.0",
+    "globals": "^15.9.0",
     "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
-    "tsup": "^8.2.3",
-    "typescript": "^5.5.4"
+    "prisma": "^5.20.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
   },
   "scripts": {
     "build": "tsup",
     "dev": "cross-env NODE_ENV=development tsup --watch --onSuccess \"node --enable-source-maps dist\"",
-    "start": "cross-env NODE_ENV=production node dist"
+    "start": "cross-env NODE_ENV=production node dist",
+    "db:pull": "pnpify prisma db pull",
+    "db:push": "pnpify prisma db push",
+    "db:generate": "pnpify prisma generate"
   },
   "resolutions": {
     "@types/ws": "^8.5.11",
     "ws": "8.18.0"
   },
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.5.0"
 }

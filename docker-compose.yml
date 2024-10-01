@@ -9,7 +9,7 @@ services:
     ports:
       - "1502:3306"
     env_file:
-      - "./.env"
+      - "./docker.env"
     networks:
       - blueberry
   discord_bot:
@@ -19,6 +19,8 @@ services:
       - blueberry
     depends_on:
       - database
+    env_file:
+      - "./.env"
 
 networks:
   blueberry:

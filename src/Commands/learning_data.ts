@@ -1,6 +1,6 @@
-import { ApplyOptions } from '@sapphire/decorators'
+import { ChatInputCommandInteraction, Message } from 'discord.js'
 import { Command, container } from '@sapphire/framework'
-import { type Message } from 'discord.js'
+import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<Command.Options>({
   name: '데이터학습량',
@@ -11,13 +11,32 @@ import { type Message } from 'discord.js'
   },
 })
 class LearnDataCommand extends Command {
-  public async messageRun(msg: Message<true>) {
-    const db = this.container.database
-    const learnData = await db.learn.all()
-    const userData = await db.learn.findOneAnotherKey('user_id', msg.author.id)
+  public registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(builder =>
+      builder.setName(this.name).setDescription(this.description),
+    )
+  }
 
-    await msg.reply(`지금까지 배운 단어: ${learnData.length}개
-${msg.author.username}님이 가르쳐준 단어: ${userData.length}개`)
+  private async _run(ctx: Message | ChatInputCommandInteraction) {
+    const user = ctx instanceof Message ? ctx.author : ctx.user
+    const db = this.container.database
+    const data = await db.learn.findMany()
+    const userData = await db.learn.findMany({
+      where: {
+        user_id: user.id,
+      },
+    })
+
+    await ctx.reply(`지금까지 배운 단어: ${data.length}개
+${user.username}님이 가르쳐준 단어: ${userData.length}개`)
+  }
+
+  public async messageRun(msg: Message) {
+    await this._run(msg)
+  }
+
+  public async chatInputRun(interaction: ChatInputCommandInteraction) {
+    await this._run(interaction)
   }
 }
 

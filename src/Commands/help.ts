@@ -1,6 +1,10 @@
 import { Args, Command, container } from '@sapphire/framework'
-import { codeBlock, type Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
+import {
+  type ChatInputCommandInteraction,
+  codeBlock,
+  Message,
+} from 'discord.js'
 
 @ApplyOptions<Command.Options>({
   name: '도움말',
@@ -12,8 +16,32 @@ import { ApplyOptions } from '@sapphire/decorators'
   },
 })
 class HelpCommand extends Command {
-  public async messageRun(msg: Message, args: Args) {
-    const commandName = await args.pick('string').catch(() => null)
+  public registerApplicationCommands(registry: Command.Registry) {
+    const commands = this.container.stores.get('commands').map(command => {
+      return {
+        name: command.name,
+        value: command.name,
+      }
+    })
+    registry.registerChatInputCommand(builder =>
+      builder
+        .setName(this.name)
+        .setDescription(this.description)
+        .addStringOption(option =>
+          option
+            .setName('명령어')
+            .setDescription('해당 명령어에 대ㅎ한 도움말을 볼 수 있어요.')
+            .addChoices(commands),
+        ),
+    )
+  }
+  private async _run(ctx: Message | ChatInputCommandInteraction, args?: Args) {
+    let commandName: string | null
+    if (ctx instanceof Message) {
+      commandName = await args!.pick('string').catch(() => null)
+    } else {
+      commandName = ctx.options.getString('명령어')
+    }
     if (
       !commandName ||
       !this.container.stores.get('commands').get(commandName)
@@ -24,7 +52,7 @@ class HelpCommand extends Command {
         commandList.push(`${module.name} - ${module.description}`)
       })
 
-      await msg.reply({
+      await ctx.reply({
         embeds: [
           {
             title: `${this.container.client.user?.username}의 도움말`,
@@ -35,6 +63,7 @@ class HelpCommand extends Command {
             footer: {
               text: `블루베리 버전: ${this.container.version}`,
             },
+            color: this.container.embedColor,
             timestamp: new Date().toISOString(),
           },
         ],
@@ -44,7 +73,7 @@ class HelpCommand extends Command {
         this.container.stores.get('commands').get(commandName)!
       if (typeof detailedDescription === 'string') return
 
-      await msg.reply({
+      await ctx.reply({
         embeds: [
           {
             title: `${this.container.client.user?.username}의 도움말`,
@@ -85,6 +114,13 @@ class HelpCommand extends Command {
         ],
       })
     }
+  }
+  public async messageRun(msg: Message, args: Args) {
+    await this._run(msg, args)
+  }
+
+  public async chatInputRun(interaction: ChatInputCommandInteraction) {
+    await this._run(interaction)
   }
 }
 

@@ -8,6 +8,7 @@ RUN mkdir app
 WORKDIR /app
 COPY . .
 RUN yarn install
+RUN yarn db:push
 RUN yarn build
 
 
