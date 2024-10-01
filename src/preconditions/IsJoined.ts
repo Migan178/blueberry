@@ -1,5 +1,9 @@
 import { container, Precondition } from '@sapphire/framework'
-import type { Message, Snowflake } from 'discord.js'
+import type {
+  ChatInputCommandInteraction,
+  Message,
+  Snowflake,
+} from 'discord.js'
 
 class IsJoinedPrecondition extends Precondition {
   private _message =
@@ -8,16 +12,29 @@ class IsJoinedPrecondition extends Precondition {
 
   public async messageRun(msg: Message) {
     const isJoined = await this._isJoined(msg.author.id)
-    if (isJoined.isErr()) {
-      msg.reply(this._message)
-    }
+    if (isJoined.isErr()) await msg.reply(this._message)
+    return isJoined
+  }
+
+  public async chatInputRun(interaction: ChatInputCommandInteraction) {
+    const isJoined = await this._isJoined(interaction.user.id)
+    if (isJoined.isErr())
+      await interaction.reply({
+        ephemeral: true,
+        content: this._message,
+      })
     return isJoined
   }
 
   // 명령어를 사용한 유저가 가입한 상태인지 판단하는 메소드
   private async _isJoined(userId: Snowflake) {
-    const user = await this.container.database.user.findOne(userId)
-    return user[0]
+    const user = await this.container.database.user.findFirst({
+      where: {
+        user_id: userId,
+      },
+    })
+
+    return user
       ? this.ok()
       : this.error({
           message: this._message,

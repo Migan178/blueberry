@@ -11,7 +11,11 @@ import { ApplyOptions } from '@sapphire/decorators'
 class JoinCommmand extends Command {
   public async messageRun(msg: Message) {
     if (
-      (await this.container.database.user.findOne(msg.author.id)).length !== 0
+      await this.container.database.user.findFirst({
+        where: {
+          user_id: msg.author.id,
+        },
+      })
     )
       return await msg.reply(
         '당신은 이미 가입한 상태입니다.\n' +
