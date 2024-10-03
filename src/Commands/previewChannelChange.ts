@@ -12,7 +12,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 })
 class PreviewChannelChangeCommand extends Command {
   public async messageRun(msg: Message) {
-    const CUSTOM_ID = 'maa$previewChange'
+    const CUSTOM_ID = 'blueberry$previewChange'
     const EXPERIMENTAL = 'experimental'
     const DEV = 'dev'
     const PREVIEW = 'preview'
