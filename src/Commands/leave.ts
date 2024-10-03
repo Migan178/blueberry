@@ -1,9 +1,9 @@
 import { Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 import {
-  ButtonStyle,
   ChatInputCommandInteraction,
   ComponentType,
+  ButtonStyle,
   Message,
   User,
 } from 'discord.js'
@@ -58,7 +58,7 @@ class LeaveCommand extends Command {
             {
               type: ComponentType.Button,
               label: '탈퇴',
-              customId: `${CUSTOM_ID}-${user.id}`,
+              customId: `${CUSTOM_ID}-accept@${user.id}`,
               style: ButtonStyle.Danger,
             },
           ],
