@@ -70,22 +70,22 @@ class PreviewChannelChangeCommand extends Command {
                 {
                   label: `${EXPERIMENTAL} 채널`,
                   description: description.replace('{channel}', EXPERIMENTAL),
-                  value: `${CUSTOM_ID}-${EXPERIMENTAL}`,
+                  value: `${CUSTOM_ID}-${EXPERIMENTAL}@${msg.author.id}`,
                 },
                 {
                   label: `${DEV} 채널`,
                   description: description.replace('{channel}', DEV),
-                  value: `${CUSTOM_ID}-${DEV}`,
+                  value: `${CUSTOM_ID}-${DEV}@${msg.author.id}`,
                 },
                 {
                   label: `${PREVIEW} 채널`,
                   description: description.replace('{channel}', PREVIEW),
-                  value: `${CUSTOM_ID}-${PREVIEW}`,
+                  value: `${CUSTOM_ID}-${PREVIEW}@${msg.author.id}`,
                 },
                 {
                   label: `정식 채널`,
                   description: description.replace('{channel}', RELEASE),
-                  value: `${CUSTOM_ID}-${RELEASE}`,
+                  value: `${CUSTOM_ID}-${RELEASE}@${msg.author.id}`,
                 },
                 {
                   label: '취소',
