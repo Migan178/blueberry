@@ -17,9 +17,10 @@ model learn {
 }
 
 model user {
-  user_id      String   @id @db.VarChar(255)
-  money        BigInt   @default(0)
-  blocked      Boolean  @default(false)
-  created_at   DateTime @default(now()) @db.DateTime(0)
-  block_reason String   @default("") @db.VarChar(255)
+  user_id         String   @id @db.VarChar(255)
+  money           BigInt   @default(0)
+  blocked         Boolean  @default(false)
+  created_at      DateTime @default(now()) @db.DateTime(0)
+  block_reason    String   @default("") @db.VarChar(255)
+  release_channel String   @default("RELEASE") @db.VarChar(255)
 }
