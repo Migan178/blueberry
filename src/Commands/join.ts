@@ -1,6 +1,12 @@
-import { type Message, ComponentType, ButtonStyle } from 'discord.js'
 import { Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
+import {
+  ChatInputCommandInteraction,
+  ComponentType,
+  ButtonStyle,
+  Message,
+  User,
+} from 'discord.js'
 
 @ApplyOptions<Command.Options>({
   name: '가입',
@@ -9,20 +15,38 @@ import { ApplyOptions } from '@sapphire/decorators'
   preconditions: ['IsBlocked'],
 })
 class JoinCommmand extends Command {
-  public async messageRun(msg: Message) {
+  public registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(builder =>
+      builder.setName(this.name).setDescription(this.description),
+    )
+  }
+
+  private async _run(ctx: Message | ChatInputCommandInteraction) {
+    let user: User
+    let ephemeral: { ephemeral: boolean } | null
+    if (ctx instanceof Message) {
+      user = ctx.author
+      ephemeral = null
+    } else {
+      user = ctx.user
+      ephemeral = { ephemeral: true }
+    }
     if (
       await this.container.database.user.findFirst({
         where: {
-          user_id: msg.author.id,
+          user_id: user.id,
         },
       })
     )
-      return await msg.reply(
-        '당신은 이미 가입한 상태입니다.\n' +
+      return await ctx.reply({
+        ...ephemeral,
+        content:
+          '당신은 이미 가입한 상태입니다.\n' +
           `만약 탈퇴를 원할 경우 ${this.container.prefix}탈퇴로 해주세요.\n`,
-      )
+      })
 
-    await msg.reply({
+    await ctx.reply({
+      ...ephemeral,
       embeds: [
         {
           title: `${this.container.client.user?.username} 서비스 가입`,
@@ -44,12 +68,20 @@ class JoinCommmand extends Command {
               type: ComponentType.Button,
               label: '동의',
               style: ButtonStyle.Success,
-              customId: `blueberry-join$accept@${msg.author.id}`,
+              customId: `blueberry-join$accept@${user.id}`,
             },
           ],
         },
       ],
     })
+  }
+
+  public async messageRun(msg: Message) {
+    await this._run(msg)
+  }
+
+  public async chatInputRun(interaction: ChatInputCommandInteraction) {
+    await this._run(interaction)
   }
 }
 
