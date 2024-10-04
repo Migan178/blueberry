@@ -9,6 +9,7 @@ import { ApplyOptions } from '@sapphire/decorators'
   detailedDescription: {
     usage: '베리야 미리보기채널변경',
   },
+  preconditions: ['IsJoined', 'IsBlocked'],
 })
 class PreviewChannelChangeCommand extends Command {
   public async messageRun(msg: Message) {
@@ -24,7 +25,6 @@ class PreviewChannelChangeCommand extends Command {
       },
     })
 
-    // TODO: 유저가 없을 작동을 설정하기 (ex: 새로이 유저를 DB에 등록하는 등)
     if (!user) return
 
     await msg.reply({
