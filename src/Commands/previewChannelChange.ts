@@ -101,9 +101,8 @@ class PreviewChannelChangeCommand extends Command {
   }
 }
 
-if (container.channel !== 'RELEASE')
-  void container.stores.loadPiece({
-    piece: PreviewChannelChangeCommand,
-    name: 'previewChannelChange',
-    store: 'commands',
-  })
+void container.stores.loadPiece({
+  piece: PreviewChannelChangeCommand,
+  name: 'previewChannelChange',
+  store: 'commands',
+})
