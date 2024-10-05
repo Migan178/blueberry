@@ -14,7 +14,7 @@ import {
     usage: '베리야 도움말 [명령어]',
     examples: ['베리야 도움말', '베리야 도움말 배워'],
   },
-  preconditions: ['IsBlocked'],
+  preconditions: ['IsBlocked', 'CheckChannel'],
 })
 class HelpCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {

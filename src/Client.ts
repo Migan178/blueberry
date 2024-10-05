@@ -83,5 +83,6 @@ declare module '@sapphire/framework' {
   interface Preconditions {
     IsJoined: never
     IsBlocked: never
+    CheckChannel: never
   }
 }

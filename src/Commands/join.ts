@@ -12,7 +12,7 @@ import {
   name: '가입',
   aliases: ['회원가입'],
   description: '블루베리의 회원가입입니다.',
-  preconditions: ['IsBlocked'],
+  preconditions: ['IsBlocked', 'CheckChannel'],
 })
 class JoinCommmand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {

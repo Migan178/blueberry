@@ -14,7 +14,7 @@ import {
   detailedDescription: {
     usage: '베리야 탈퇴',
   },
-  preconditions: ['IsJoined', 'IsBlocked'],
+  preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
 class LeaveCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {

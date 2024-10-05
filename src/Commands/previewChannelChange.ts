@@ -9,7 +9,7 @@ import { ApplyOptions } from '@sapphire/decorators'
   detailedDescription: {
     usage: '베리야 미리보기채널변경',
   },
-  preconditions: ['IsJoined', 'IsBlocked'],
+  preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
 class PreviewChannelChangeCommand extends Command {
   public async messageRun(msg: Message) {

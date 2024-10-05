@@ -14,6 +14,10 @@ class MessageCreateListener extends Listener {
     })
     if (msg.author.bot) return
     if (msg.content.startsWith(prefix)) {
+      const user = await this.container.database.user.findFirst({
+        where: { user_id: msg.author.id },
+      })
+      if (user && user.release_channel !== this.container.channel) return
       if (this.container.channel !== 'RELEASE') await previewWarning(msg)
 
       await dokdo.run(msg)

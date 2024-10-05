@@ -9,7 +9,7 @@ import { platform, arch } from 'os'
   detailedDescription: {
     usage: '베리야 정보',
   },
-  preconditions: ['IsJoined', 'IsBlocked'],
+  preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
 class InformationCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
