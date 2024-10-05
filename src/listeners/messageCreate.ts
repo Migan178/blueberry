@@ -16,21 +16,7 @@ class MessageCreateListener extends Listener {
     if (msg.content.startsWith(prefix)) {
       if (this.container.channel !== 'RELEASE') await previewWarning(msg)
 
-      const args = msg.content.slice(prefix.length).trim().split(/ +/g)
-
-      this.container.logger.debug(`[ChatBot] command: ${args.join(' ')}`)
-
-      if (dokdo.options.aliases?.includes(args[0])) {
-        await dokdo.run(msg)
-      } else {
-        if (!this.container.stores.get('commands').get(args[0])) {
-          await msg.channel.sendTyping()
-          const response = await this.container.chatBot.getResponse(msg)
-          response
-            ? await msg.reply(response)
-            : await msg.reply('해당하는걸 찾을 수 없어요.')
-        }
-      }
+      await dokdo.run(msg)
     }
   }
 }

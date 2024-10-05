@@ -1,5 +1,4 @@
 import './previewChannelChange'
-import './learning_data'
 import './deleteLearn'
 import './information'
 import './wordRelay'
