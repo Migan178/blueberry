@@ -5,9 +5,9 @@ import { platform, arch } from 'os'
 
 @ApplyOptions<Command.Options>({
   name: '정보',
-  description: '머핀봇의 정보를 알ㄹ려줘요.',
+  description: '블루베리의 정보를 알려줘요.',
   detailedDescription: {
-    usage: '머핀아 정보',
+    usage: '베리야 정보',
   },
 })
 class InformationCommand extends Command {
@@ -21,33 +21,33 @@ class InformationCommand extends Command {
     await ctx.reply({
       embeds: [
         {
-          title: `${this.container.client.user?.username}의 정ㅂ보`,
+          title: `${this.container.client.user?.username}의 정보`,
           color: this.container.embedColor,
           fields: [
             {
-              name: '구동ㅎ환경',
+              name: '구동환경',
               value: `\`${platform()} ${arch()}\``,
               inline: false,
             },
             {
-              name: '버ㅈ전',
+              name: '버전',
               value: `\`${this.container.version}\``,
               inline: true,
             },
             {
-              name: '채ㄴ널',
+              name: '채널',
               value: `\`${this.container.channel.toLowerCase()}\``,
               inline: true,
             },
             {
-              name: '최근 업ㄷ데이트 날짜',
+              name: '최근 업데이트 날짜',
               value: `\`${this.container.lastUpdated.toLocaleDateString('ko', {
                 dateStyle: 'long',
               })}\``,
               inline: true,
             },
             {
-              name: '개ㅂ발자',
+              name: '개발자',
               value: `\`${
                 (
                   await this.container.client.users.fetch(
