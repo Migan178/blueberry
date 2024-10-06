@@ -1,5 +1,5 @@
+import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'
 import { Command, container } from '@sapphire/framework'
-import { ComponentType, type Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { returnReleaseChannel } from '../modules'
 
@@ -13,7 +13,13 @@ import { returnReleaseChannel } from '../modules'
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
 class PreviewChannelChangeCommand extends Command {
-  public async messageRun(msg: Message) {
+  public registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(builder =>
+      builder.setName(this.name).setDescription(this.description),
+    )
+  }
+
+  public async chatInputRun(interaction: ChatInputCommandInteraction) {
     const CUSTOM_ID = 'blueberry$previewChange'
     const EXPERIMENTAL = 'experimental'
     const DEV = 'dev'
@@ -22,17 +28,18 @@ class PreviewChannelChangeCommand extends Command {
     const description = '현재 채널을 {channel}로 설정해요.'
     const user = await this.container.database.user.findFirst({
       where: {
-        user_id: msg.author.id,
+        user_id: interaction.user.id,
       },
     })
 
     if (!user) return
 
-    await msg.reply({
+    await interaction.reply({
+      ephemeral: true,
       embeds: [
         {
           title: `${this.container.client.user?.username}의 미리보기 채널 변경`,
-          description: `현재 ${msg.author.username}님이 속한 채널: ${returnReleaseChannel(user.release_channel)}`,
+          description: `현재 ${interaction.user.username}님이 속한 채널: ${returnReleaseChannel(user.release_channel)}`,
           fields: [
             {
               name: `실험 채널`,
@@ -66,7 +73,7 @@ class PreviewChannelChangeCommand extends Command {
           components: [
             {
               type: ComponentType.StringSelect,
-              customId: `${CUSTOM_ID}@${msg.author.id}`,
+              customId: `${CUSTOM_ID}@${interaction.user.id}`,
               options: [
                 {
                   label: `실험 채널`,
@@ -74,7 +81,7 @@ class PreviewChannelChangeCommand extends Command {
                     '{channel}',
                     returnReleaseChannel(EXPERIMENTAL.toUpperCase()),
                   ),
-                  value: `${CUSTOM_ID}-${EXPERIMENTAL}@${msg.author.id}`,
+                  value: `${CUSTOM_ID}-${EXPERIMENTAL}@${interaction.user.id}`,
                 },
                 {
                   label: `개발 채널`,
@@ -82,7 +89,7 @@ class PreviewChannelChangeCommand extends Command {
                     '{channel}',
                     returnReleaseChannel(DEV.toUpperCase()),
                   ),
-                  value: `${CUSTOM_ID}-${DEV}@${msg.author.id}`,
+                  value: `${CUSTOM_ID}-${DEV}@${interaction.user.id}`,
                 },
                 {
                   label: `미리보기 채널`,
@@ -90,7 +97,7 @@ class PreviewChannelChangeCommand extends Command {
                     '{channel}',
                     returnReleaseChannel(PREVIEW.toUpperCase()),
                   ),
-                  value: `${CUSTOM_ID}-${PREVIEW}@${msg.author.id}`,
+                  value: `${CUSTOM_ID}-${PREVIEW}@${interaction.user.id}`,
                 },
                 {
                   label: `정식 채널`,
@@ -98,7 +105,7 @@ class PreviewChannelChangeCommand extends Command {
                     '{channel}',
                     returnReleaseChannel(RELEASE.toUpperCase()),
                   ),
-                  value: `${CUSTOM_ID}-${RELEASE}@${msg.author.id}`,
+                  value: `${CUSTOM_ID}-${RELEASE}@${interaction.user.id}`,
                 },
                 {
                   label: '취소',
