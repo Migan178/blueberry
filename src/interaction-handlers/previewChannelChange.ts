@@ -1,11 +1,11 @@
 import { StringSelectMenuInteraction } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
+import { returnReleaseChannel } from '../modules'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
   container,
 } from '@sapphire/framework'
-import {} from '../modules'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.SelectMenu,
@@ -56,7 +56,7 @@ class PreviewChannelChangeInteractionHandler extends InteractionHandler {
       embeds: [
         {
           title: `${this.container.client.user?.username}의 미리보기 채널변경`,
-          description: `${channel}로 미리보기 채널변경을 했어요.`,
+          description: `${returnReleaseChannel(channel.toUpperCase())}로 미리보기 채널변경을 했어요.`,
           color: 0x00ff00,
         },
       ],

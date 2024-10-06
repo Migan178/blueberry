@@ -1,6 +1,6 @@
 import { SapphireClient, container, LogLevel } from '@sapphire/framework'
+import { Config, NODE_ENV, ReleaseChannel } from './modules'
 import { GatewayIntentBits, Partials } from 'discord.js'
-import { Config, NODE_ENV } from './modules'
 import { version } from '../package.json'
 import { PrismaClient } from '../prisma'
 import semver from 'semver'
@@ -69,7 +69,7 @@ declare module '@sapphire/framework' {
     version: string
     dokdoAliases: string[]
     config: Config
-    channel: 'EXPERIMENTAL' | 'DEV' | 'PREVIEW' | 'RELEASE'
+    channel: ReleaseChannel
     lastUpdated: Date
     embedColor: number
   }
