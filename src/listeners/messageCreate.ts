@@ -1,6 +1,6 @@
 import { Listener, container } from '@sapphire/framework'
-import { noPerm, previewWarning } from '../modules'
 import { type Message } from 'discord.js'
+import { noPerm } from '../modules'
 import { Client } from 'dokdo'
 
 class MessageCreateListener extends Listener {
@@ -18,7 +18,6 @@ class MessageCreateListener extends Listener {
         where: { user_id: msg.author.id },
       })
       if (user && user.release_channel !== this.container.channel) return
-      if (this.container.channel !== 'RELEASE') await previewWarning(msg)
 
       await dokdo.run(msg)
     }

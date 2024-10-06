@@ -43,7 +43,6 @@ export default class MuffinBot extends SapphireClient {
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
       ],
-      loadMessageCommandListeners: true,
       defaultPrefix: container.prefix,
       logger: {
         level: NODE_ENV === 'development' ? LogLevel.Debug : LogLevel.Info,
