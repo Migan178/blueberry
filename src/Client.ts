@@ -18,12 +18,12 @@ const release = version
   .split('.')[1]
 
 container.config = config
-container.embedColor = 0xaddb87
+container.embedColor = 0x0078d7
 container.prefix = config.bot.prefix
 container.version = version
 container.database = new PrismaClient()
 container.dokdoAliases = ['dokdo', 'dok', 'Dokdo', 'Dok', '테스트']
-container.lastUpdated = new Date('2024-10-05')
+container.lastUpdated = new Date('2024-10-06')
 
 if (release.startsWith('e')) {
   container.channel = 'EXPERIMENTAL'
