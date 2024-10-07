@@ -1,6 +1,6 @@
 {
   "name": "blueberry",
-  "version": "0.0.0-hydrogen.e241009a",
+  "version": "0.0.0-hydrogen.e241009a_test_change_log_feature",
   "description": "Public discord bot based Muffin-NOT-Ai",
   "main": "dist/src/index.js",
   "private": true,
