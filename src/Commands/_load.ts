@@ -1,6 +1,0 @@
-import './previewChannelChange'
-import './information'
-import './wordRelay'
-import './leave'
-import './help'
-import './join'

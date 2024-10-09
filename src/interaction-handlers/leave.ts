@@ -2,14 +2,13 @@ import { ApplyOptions } from '@sapphire/decorators'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
-  container,
 } from '@sapphire/framework'
 import { ButtonInteraction } from 'discord.js'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.Button,
 })
-class LeaveInteractionHandler extends InteractionHandler {
+export default class LeaveInteractionHandler extends InteractionHandler {
   private _CUSTOM_ID = 'blueberry$leave'
   public async parse(interaction: ButtonInteraction) {
     if (!interaction.customId.startsWith(this._CUSTOM_ID)) return this.none()
@@ -66,9 +65,3 @@ class LeaveInteractionHandler extends InteractionHandler {
     }
   }
 }
-
-void container.stores.loadPiece({
-  piece: LeaveInteractionHandler,
-  name: 'leave',
-  store: 'interaction-handlers',
-})

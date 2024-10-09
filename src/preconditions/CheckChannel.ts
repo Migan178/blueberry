@@ -1,7 +1,7 @@
-import { container, Precondition } from '@sapphire/framework'
 import { ChatInputCommandInteraction, Message, Snowflake } from 'discord.js'
+import { Precondition } from '@sapphire/framework'
 
-class CheckChannelPreicondition extends Precondition {
+export default class CheckChannelPreicondition extends Precondition {
   public async messageRun(msg: Message) {
     return await this._checkChannel(msg.author.id)
   }
@@ -24,9 +24,3 @@ class CheckChannelPreicondition extends Precondition {
       : this.error()
   }
 }
-
-void container.stores.loadPiece({
-  piece: CheckChannelPreicondition,
-  name: 'CheckChannel',
-  store: 'preconditions',
-})

@@ -1,0 +1,5 @@
+{
+  "ext": "ts,json",
+  "exec": "pnpm build --sourcemap && node dist/src",
+  "ignore": ["dist/**/*.*"]
+}

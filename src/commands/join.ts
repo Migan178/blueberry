@@ -1,5 +1,5 @@
-import { Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
+import { Command } from '@sapphire/framework'
 import {
   ChatInputCommandInteraction,
   ComponentType,
@@ -14,7 +14,7 @@ import {
   description: '블루베리의 회원가입입니다.',
   preconditions: ['IsBlocked', 'CheckChannel'],
 })
-class JoinCommmand extends Command {
+export default class JoinCommmand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
     registry.registerChatInputCommand(builder =>
       builder.setName(this.name).setDescription(this.description),
@@ -84,9 +84,3 @@ class JoinCommmand extends Command {
     await this._run(interaction)
   }
 }
-
-void container.stores.loadPiece({
-  piece: JoinCommmand,
-  name: 'join',
-  store: 'commands',
-})

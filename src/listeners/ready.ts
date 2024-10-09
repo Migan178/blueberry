@@ -1,26 +1,21 @@
-import { container, Listener } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 import { ActivityType, Client } from 'discord.js'
+import { Listener } from '@sapphire/framework'
+import { listeners } from 'process'
 
 @ApplyOptions<Listener.Options>({ once: true })
-class ClientReadyListener extends Listener {
+export default class ClientReadyListener extends Listener {
   public async run(client: Client<true>) {
-    function setStatus() {
+    function setStatus(listener: Listener) {
       client.user.setActivity({
         type: ActivityType.Custom,
-        name: `현재 개발중. (${container.version})`,
+        name: `현재 개발중. (${listener.container.version})`,
       })
     }
 
-    setStatus()
-    setInterval(() => setStatus(), 600000)
+    setStatus(this)
+    setInterval(() => setStatus(this), 600000)
 
     this.container.logger.info(`[BlueBerry] Bot Ready.`)
   }
 }
-
-void container.stores.loadPiece({
-  piece: ClientReadyListener,
-  name: 'ready',
-  store: 'listeners',
-})

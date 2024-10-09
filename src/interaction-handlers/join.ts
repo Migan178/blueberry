@@ -3,13 +3,12 @@ import { type ButtonInteraction } from 'discord.js'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
-  container,
 } from '@sapphire/framework'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.Button,
 })
-class JoinHandler extends InteractionHandler {
+export default class JoinHandler extends InteractionHandler {
   public async parse(interaction: ButtonInteraction) {
     if (!interaction.customId.startsWith('blueberry-join')) return this.none()
     return this.some()
@@ -59,9 +58,3 @@ class JoinHandler extends InteractionHandler {
     }
   }
 }
-
-void container.stores.loadPiece({
-  piece: JoinHandler,
-  name: 'join',
-  store: 'interaction-handlers',
-})

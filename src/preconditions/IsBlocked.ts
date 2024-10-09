@@ -1,11 +1,11 @@
-import { container, Precondition } from '@sapphire/framework'
+import { Precondition } from '@sapphire/framework'
 import type {
   ChatInputCommandInteraction,
-  Message,
   Snowflake,
+  Message,
 } from 'discord.js'
 
-class IsBlockedPrecondition extends Precondition {
+export default class IsBlockedPrecondition extends Precondition {
   private _message = '당신은 해당 서비스에서 차단되었어요.\n차단 사유: {reason}'
 
   public async messageRun(msg: Message) {
@@ -41,9 +41,3 @@ class IsBlockedPrecondition extends Precondition {
       : this.ok()
   }
 }
-
-void container.stores.loadPiece({
-  piece: IsBlockedPrecondition,
-  name: 'IsBlocked',
-  store: 'preconditions',
-})

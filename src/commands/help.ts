@@ -1,5 +1,5 @@
-import { Args, Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
+import { Args, Command } from '@sapphire/framework'
 import {
   type ChatInputCommandInteraction,
   codeBlock,
@@ -16,7 +16,7 @@ import {
   },
   preconditions: ['IsBlocked', 'CheckChannel'],
 })
-class HelpCommand extends Command {
+export default class HelpCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
     const commands = this.container.stores.get('commands').map(command => {
       return {
@@ -64,7 +64,7 @@ class HelpCommand extends Command {
             footer: {
               text: `블루베리 버전: ${this.container.version}`,
             },
-            color: this.container.embedColor,
+            color: this.container.embedColors.default,
             timestamp: new Date().toISOString(),
           },
         ],
@@ -111,6 +111,7 @@ class HelpCommand extends Command {
               text: `블루베리 버전: ${this.container.version}`,
             },
             timestamp: new Date().toISOString(),
+            color: this.container.embedColors.default,
           },
         ],
       })
@@ -124,9 +125,3 @@ class HelpCommand extends Command {
     await this._run(interaction)
   }
 }
-
-void container.stores.loadPiece({
-  piece: HelpCommand,
-  name: 'help',
-  store: 'commands',
-})

@@ -4,13 +4,12 @@ import { returnReleaseChannel } from '../modules'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
-  container,
 } from '@sapphire/framework'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.SelectMenu,
 })
-class PreviewChannelChangeInteractionHandler extends InteractionHandler {
+export default class PreviewChannelChangeInteractionHandler extends InteractionHandler {
   private _CUSTOM_ID = 'blueberry$previewChange'
 
   public async parse(interaction: StringSelectMenuInteraction) {
@@ -64,9 +63,3 @@ class PreviewChannelChangeInteractionHandler extends InteractionHandler {
     })
   }
 }
-
-void container.stores.loadPiece({
-  piece: PreviewChannelChangeInteractionHandler,
-  name: 'previewChannelChange',
-  store: 'interaction-handlers',
-})

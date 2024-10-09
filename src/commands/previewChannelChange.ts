@@ -1,7 +1,7 @@
 import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'
-import { Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 import { returnReleaseChannel } from '../modules'
+import { Command } from '@sapphire/framework'
 
 @ApplyOptions<Command.Options>({
   name: '미리보기채널변경',
@@ -12,7 +12,7 @@ import { returnReleaseChannel } from '../modules'
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
-class PreviewChannelChangeCommand extends Command {
+export default class PreviewChannelChangeCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
     registry.registerChatInputCommand(builder =>
       builder.setName(this.name).setDescription(this.description),
@@ -120,9 +120,3 @@ class PreviewChannelChangeCommand extends Command {
     })
   }
 }
-
-void container.stores.loadPiece({
-  piece: PreviewChannelChangeCommand,
-  name: 'previewChannelChange',
-  store: 'commands',
-})

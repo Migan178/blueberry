@@ -1,11 +1,11 @@
-import { container, Precondition } from '@sapphire/framework'
+import { Precondition } from '@sapphire/framework'
 import type {
   ChatInputCommandInteraction,
-  Message,
   Snowflake,
+  Message,
 } from 'discord.js'
 
-class IsJoinedPrecondition extends Precondition {
+export default class IsJoinedPrecondition extends Precondition {
   private _message =
     '해당 기능을 사용할려면 가입을 해야해요. ' +
     `\`${this.container.prefix}가입\`으로 가입한 후 사용해주세요.`
@@ -41,9 +41,3 @@ class IsJoinedPrecondition extends Precondition {
         })
   }
 }
-
-void container.stores.loadPiece({
-  piece: IsJoinedPrecondition,
-  name: 'IsJoined',
-  store: 'preconditions',
-})

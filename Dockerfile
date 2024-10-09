@@ -7,9 +7,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 RUN mkdir app
 WORKDIR /app
 COPY . .
-RUN yarn install
-RUN yarn db:push
-RUN yarn build
+RUN pnpm install
+RUN pnpm db:push
+RUN pnpm build
 
 
 ENTRYPOINT ["./docker-entrypoint.sh"]

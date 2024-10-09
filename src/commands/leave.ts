@@ -1,5 +1,5 @@
-import { Command, container } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
+import { Command } from '@sapphire/framework'
 import {
   ChatInputCommandInteraction,
   ComponentType,
@@ -16,7 +16,7 @@ import {
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
-class LeaveCommand extends Command {
+export default class LeaveCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
     registry.registerChatInputCommand(builder =>
       builder.setName(this.name).setDescription(this.description),
@@ -75,9 +75,3 @@ class LeaveCommand extends Command {
     await this._run(interaction)
   }
 }
-
-void container.stores.loadPiece({
-  piece: LeaveCommand,
-  name: 'leave',
-  store: 'commands',
-})

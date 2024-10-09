@@ -1,1 +1,1 @@
-import('./Client').then(a => new a.default().login())
+import('./client').then(a => new a.default().login())
