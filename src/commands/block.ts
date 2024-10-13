@@ -5,6 +5,9 @@ import { ChatInputCommandInteraction } from 'discord.js'
 @ApplyOptions<Command.Options>({
   name: '차단',
   description: '(개발자 전용) 유저를 차단해요.',
+  detailedDescription: {
+    usage: '/차단 유저ID:유저의 ID',
+  },
   preconditions: ['OwnerOnly'],
 })
 export default class BlockCommand extends Command {
