@@ -84,5 +84,6 @@ declare module '@sapphire/framework' {
     IsJoined: never
     IsBlocked: never
     CheckChannel: never
+    OwnerOnly: never
   }
 }
