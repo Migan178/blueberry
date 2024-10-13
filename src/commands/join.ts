@@ -12,6 +12,9 @@ import {
   name: '가입',
   aliases: ['회원가입'],
   description: '블루베리의 회원가입입니다.',
+  detailedDescription: {
+    usage: '/가입',
+  },
   preconditions: ['IsBlocked', 'CheckChannel'],
 })
 export default class JoinCommmand extends Command {
