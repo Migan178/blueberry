@@ -50,7 +50,11 @@ export default class HelpCommand extends Command {
       const commandList: string[] = []
 
       this.container.stores.get('commands').forEach(module => {
-        if (module.description.startsWith('(개발자 전용)')) return
+        if (
+          typeof module.detailedDescription === 'string' ||
+          module.detailedDescription.ownerOnly
+        )
+          return
         commandList.push(`${module.name} - ${module.description}`)
       })
 

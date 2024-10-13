@@ -78,6 +78,7 @@ declare module '@sapphire/framework' {
   interface DetailedDescriptionCommandObject {
     usage: string
     examples?: string[]
+    ownerOnly?: boolean
   }
 
   interface Preconditions {

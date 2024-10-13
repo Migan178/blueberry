@@ -7,6 +7,7 @@ import { ChatInputCommandInteraction } from 'discord.js'
   description: '(개발자 전용) 유저를 차단해요.',
   detailedDescription: {
     usage: '/차단 유저ID:유저의 ID',
+    ownerOnly: true,
   },
   preconditions: ['OwnerOnly'],
 })
