@@ -11,6 +11,7 @@ export default class CheckChannelPreicondition extends Precondition {
   }
 
   private async _checkChannel(userId: Snowflake) {
+    if (this.container.config.bot.check_preview_channel) return this.ok()
     const user = await this.container.database.user.findFirst({
       where: {
         user_id: userId,
