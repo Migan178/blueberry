@@ -16,7 +16,7 @@ container.prefix = config.bot.prefix
 container.version = version
 container.database = new PrismaClient()
 container.dokdoAliases = ['dokdo', 'dok', 'Dokdo', 'Dok', '테스트']
-container.lastUpdated = new Date('2024-10-09')
+container.lastUpdated = new Date('2024-10-13')
 container.embedColors = {
   default: 0x0078d7,
   fail: 0xff0000,
