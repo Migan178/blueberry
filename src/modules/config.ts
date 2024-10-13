@@ -7,10 +7,6 @@ export default class MAAConfig {
     prefix: process.env.BOT_PREFIX!,
   }
 
-  public readonly train = {
-    user_ID: process.env.TRAIN_USER_ID!,
-  }
-
   public readonly api = {
     opendict: process.env.API_OPENDICT!,
   }
