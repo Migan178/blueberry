@@ -1,6 +1,6 @@
-import type { ChatInputCommandInteraction, Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
+import type { ChatInputCommandInteraction, Message } from 'discord.js'
 import { platform, arch } from 'os'
 
 @ApplyOptions<Command.Options>({

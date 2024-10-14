@@ -1,8 +1,8 @@
+import Config from './config'
+import { NODE_ENV } from './env'
+import noPerm from './noPerm'
 import { ReleaseChannel, returnReleaseChannel } from './releaseChannelType'
 import { WordRelay } from './wordRelay'
-import { NODE_ENV } from './env'
-import Config from './config'
-import noPerm from './noPerm'
 
 export {
   returnReleaseChannel,

@@ -1,8 +1,8 @@
-import { SapphireClient, container, LogLevel } from '@sapphire/framework'
-import { Config, NODE_ENV, ReleaseChannel } from './modules'
-import { GatewayIntentBits, Partials } from 'discord.js'
-import { PrismaClient } from '@prisma/client'
 import { version } from '../package.json'
+import { Config, NODE_ENV, ReleaseChannel } from './modules'
+import { PrismaClient } from '@prisma/client'
+import { SapphireClient, container, LogLevel } from '@sapphire/framework'
+import { GatewayIntentBits, Partials } from 'discord.js'
 import semver from 'semver'
 
 const config = new Config()

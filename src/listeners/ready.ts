@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { ActivityType, Client } from 'discord.js'
 import { Listener } from '@sapphire/framework'
+import { ActivityType, Client } from 'discord.js'
 import { listeners } from 'process'
 
 @ApplyOptions<Listener.Options>({ once: true })

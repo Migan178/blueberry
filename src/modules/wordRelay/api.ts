@@ -1,6 +1,6 @@
-import axios, { type AxiosResponse } from 'axios'
-import { container } from '@sapphire/framework'
 import type { APIResponse } from './types'
+import { container } from '@sapphire/framework'
+import axios, { type AxiosResponse } from 'axios'
 
 export class OpenDictAPI {
   private _url = 'https://opendict.korean.go.kr/api/search'

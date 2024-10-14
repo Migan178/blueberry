@@ -1,6 +1,6 @@
+import { noPerm } from '../modules'
 import { Listener } from '@sapphire/framework'
 import { type Message } from 'discord.js'
-import { noPerm } from '../modules'
 import { Client } from 'dokdo'
 
 export default class MessageCreateListener extends Listener {

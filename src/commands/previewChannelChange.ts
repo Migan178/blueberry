@@ -1,7 +1,7 @@
-import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'
-import { ApplyOptions } from '@sapphire/decorators'
 import { returnReleaseChannel } from '../modules'
+import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
+import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'
 
 @ApplyOptions<Command.Options>({
   name: '미리보기채널변경',

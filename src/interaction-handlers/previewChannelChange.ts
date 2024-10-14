@@ -1,10 +1,10 @@
-import { StringSelectMenuInteraction } from 'discord.js'
-import { ApplyOptions } from '@sapphire/decorators'
 import { returnReleaseChannel } from '../modules'
+import { ApplyOptions } from '@sapphire/decorators'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
 } from '@sapphire/framework'
+import { StringSelectMenuInteraction } from 'discord.js'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.SelectMenu,

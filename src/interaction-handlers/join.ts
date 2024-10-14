@@ -1,9 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { type ButtonInteraction } from 'discord.js'
 import {
   InteractionHandlerTypes,
   InteractionHandler,
 } from '@sapphire/framework'
+import { type ButtonInteraction } from 'discord.js'
 
 @ApplyOptions<InteractionHandler.Options>({
   interactionHandlerType: InteractionHandlerTypes.Button,

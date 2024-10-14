@@ -1,7 +1,7 @@
-import { type Message, PermissionFlagsBits } from 'discord.js'
+import { WordRelay } from '../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
-import { WordRelay } from '../modules'
+import { type Message, PermissionFlagsBits } from 'discord.js'
 
 @ApplyOptions<Command.Options>({
   name: '끝말잇기',

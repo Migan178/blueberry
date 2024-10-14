@@ -1,5 +1,5 @@
-import { ChatInputCommandInteraction, Message, Snowflake } from 'discord.js'
 import { Precondition } from '@sapphire/framework'
+import { ChatInputCommandInteraction, Message, Snowflake } from 'discord.js'
 
 export default class CheckChannelPreicondition extends Precondition {
   public async messageRun(msg: Message) {

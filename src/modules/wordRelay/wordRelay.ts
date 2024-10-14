@@ -1,7 +1,7 @@
-import { type Message, type APIEmbed } from 'discord.js'
+import { OpenDictAPI } from './api'
 import type { APIResponse, Item } from './types'
 import { AxiosResponse } from 'axios'
-import { OpenDictAPI } from './api'
+import { type Message, type APIEmbed } from 'discord.js'
 
 export class WordRelay {
   private _usedWords: string[] = []
