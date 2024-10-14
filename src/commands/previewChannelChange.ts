@@ -6,7 +6,6 @@ import { Command } from '@sapphire/framework'
 @ApplyOptions<Command.Options>({
   name: '미리보기채널변경',
   description: '블루베리의 미리보기 채널을 변경해요.',
-  aliases: ['미리보기', '채널변경', '미리보기변경'],
   detailedDescription: {
     usage: '/미리보기채널변경',
   },

@@ -10,7 +10,6 @@ import {
 
 @ApplyOptions<Command.Options>({
   name: '가입',
-  aliases: ['회원가입'],
   description: '블루베리의 회원가입입니다.',
   detailedDescription: {
     usage: '/가입',

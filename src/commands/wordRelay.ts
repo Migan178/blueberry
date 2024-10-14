@@ -5,7 +5,6 @@ import { WordRelay } from '../modules'
 
 @ApplyOptions<Command.Options>({
   name: '끝말잇기',
-  aliases: ['끄투', '끄투리오'],
   description: '베리랑 끝말잇기를 해보세요.',
   detailedDescription: {
     usage: '/끝말잇기',

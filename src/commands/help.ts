@@ -8,7 +8,6 @@ import {
 
 @ApplyOptions<Command.Options>({
   name: '도움말',
-  aliases: ['명령어', '도움', 'help'],
   description: '기본적인 사용법이에요.',
   detailedDescription: {
     usage: '/도움말 [명령어:정보를 볼 명령어]',
@@ -75,8 +74,9 @@ export default class HelpCommand extends Command {
         ],
       })
     } else {
-      const { name, aliases, description, detailedDescription } =
-        this.container.stores.get('commands').get(commandName)!
+      const { name, description, detailedDescription } = this.container.stores
+        .get('commands')
+        .get(commandName)!
       if (typeof detailedDescription === 'string') return
 
       await ctx.reply({
@@ -88,11 +88,6 @@ export default class HelpCommand extends Command {
               {
                 name: '설명',
                 value: description,
-                inline: true,
-              },
-              {
-                name: '별칭',
-                value: aliases.map(item => `\`${item}\``).join(', '),
                 inline: true,
               },
               {
