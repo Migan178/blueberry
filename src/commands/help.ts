@@ -31,7 +31,7 @@ export default class HelpCommand extends Command {
         .addStringOption(option =>
           option
             .setName('명령어')
-            .setDescription('해당 명령어에 대ㅎ한 도움말을 볼 수 있어요.')
+            .setDescription('해당 명령어에 대한 도움말을 볼 수 있어요.')
             .addChoices(commands),
         ),
     )
