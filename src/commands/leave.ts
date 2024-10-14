@@ -12,7 +12,7 @@ import {
   name: '탈퇴',
   description: '블루베리 서비스에서 탈퇴해요.',
   detailedDescription: {
-    usage: '베리야 탈퇴',
+    usage: '/탈퇴',
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })

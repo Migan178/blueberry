@@ -7,7 +7,7 @@ import { platform, arch } from 'os'
   name: '정보',
   description: '블루베리의 정보를 알려줘요.',
   detailedDescription: {
-    usage: '베리야 정보',
+    usage: '/정보',
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })

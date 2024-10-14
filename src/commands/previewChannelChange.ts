@@ -8,7 +8,7 @@ import { Command } from '@sapphire/framework'
   description: '블루베리의 미리보기 채널을 변경해요.',
   aliases: ['미리보기', '채널변경', '미리보기변경'],
   detailedDescription: {
-    usage: '베리야 미리보기채널변경',
+    usage: '/미리보기채널변경',
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })

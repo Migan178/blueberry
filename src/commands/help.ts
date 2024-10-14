@@ -11,8 +11,8 @@ import {
   aliases: ['명령어', '도움', 'help'],
   description: '기본적인 사용법이에요.',
   detailedDescription: {
-    usage: '베리야 도움말 [명령어]',
-    examples: ['베리야 도움말', '베리야 도움말 배워'],
+    usage: '/도움말 [명령어:정보를 볼 명령어]',
+    examples: ['/도움말', '/도움말 명령어:끝말잇기'],
   },
   preconditions: ['IsBlocked', 'CheckChannel'],
 })

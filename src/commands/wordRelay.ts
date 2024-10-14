@@ -8,7 +8,7 @@ import { WordRelay } from '../modules'
   aliases: ['끄투', '끄투리오'],
   description: '베리랑 끝말잇기를 해보세요.',
   detailedDescription: {
-    usage: '베리야 끝말잇기',
+    usage: '/끝말잇기',
   },
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
