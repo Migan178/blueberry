@@ -42,7 +42,7 @@ export default class BlockCommand extends Command {
         },
       })
     )
-      return interaction.reply({
+      return await interaction.reply({
         ephemeral: true,
         content: '해당 유저를 찾지 못하였어요.',
       })
