@@ -19,6 +19,11 @@ export default class PreviewChannelChangeCommand extends Command {
   }
 
   public async chatInputRun(interaction: ChatInputCommandInteraction) {
+    if (!this.container.config.bot.check_preview_channel)
+      return await interaction.reply({
+        ephemeral: true,
+        content: '현재 이봇은 미리보기 채널변경을 지원하지 않아요.',
+      })
     const CUSTOM_ID = 'blueberry$previewChange'
     const EXPERIMENTAL = 'experimental'
     const DEV = 'dev'
