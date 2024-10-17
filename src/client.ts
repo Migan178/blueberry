@@ -12,7 +12,7 @@ const release = version
   .split('.')[1]
 
 container.config = config
-container.prefix = config.bot.prefix
+container.prefix = '/'
 container.version = version
 container.database = new PrismaClient()
 container.dokdoAliases = ['dokdo', 'dok', 'Dokdo', 'Dok', '테스트']
@@ -41,7 +41,6 @@ export default class MuffinBot extends SapphireClient {
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
       ],
-      defaultPrefix: container.prefix,
       logger: {
         level: NODE_ENV === 'development' ? LogLevel.Debug : LogLevel.Info,
       },
