@@ -1,5 +1,5 @@
 {
   "ext": "ts,json",
-  "exec": "pnpm build --sourcemap && node dist/src",
+  "exec": "tsc --sourcemap && cross-env NODE_ENV=development node --enable-source-maps dist/src",
   "ignore": ["dist/**/*.*"]
 }
