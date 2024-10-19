@@ -17,14 +17,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: [
-      '**/.yarn/',
-      '**/.pnp.*',
-      '**/dist/',
-      '**/.vscode/',
-      '**/.idea/',
-      '**/tsup.config.ts',
-    ],
+    ignores: ['**/dist/', '**/.vscode/', '**/.idea/', '**/node_modules/'],
   },
   ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier'),
   {
