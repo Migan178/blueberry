@@ -28,9 +28,15 @@ export default class GamblingCommand extends Command {
 
   public async chatInputRun(interaction: ChatInputCommandInteraction) {
     const userInput = interaction.options.getString('금액', true)
+    const userId = interaction.user.id
+    /** @description If value is 1, lost the coin. Else, get the coin. */
+    const isLost = Math.floor(Math.random() * 3)
+    console.log(isLost)
+    /** @description Multiple is 2 - 5. */
+    const multiply = BigInt(Math.floor(Math.random() * 5) + 1)
     const user = await this.container.database.user.findFirst({
       where: {
-        user_id: interaction.user.id,
+        user_id: userId,
       },
     })
     let amount: bigint
@@ -48,12 +54,38 @@ export default class GamblingCommand extends Command {
         content: '현재 봇 내 재화가 도박을 건 금액보다 적어요.',
       })
 
-    // TODO: 확률적으로 도박을 건 돈에서 2 ~ 5배로 돌려주거나, 잃기
-
     if (amount < 500)
       return await interaction.reply({
         ephemeral: true,
         content: '도박을 할려면 최소 500봇 내 재화가 필요해요.',
       })
+
+    if (isLost !== 0) {
+      await this.container.database.user.update({
+        data: {
+          money: user.money - amount,
+        },
+        where: {
+          user_id: userId,
+        },
+      })
+      return await interaction.reply({
+        content: `도박에서 ${amount}봇 내 재화를 잃었어요.`,
+      })
+    }
+
+    amount *= multiply
+
+    await this.container.database.user.update({
+      data: {
+        money: user.money + amount,
+      },
+      where: {
+        user_id: userId,
+      },
+    })
+    await interaction.reply({
+      content: `도박에서 ${multiply}배를 따 ${amount}원을 얻었어요.`,
+    })
   }
 }
