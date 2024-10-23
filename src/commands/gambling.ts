@@ -49,6 +49,11 @@ export default class GamblingCommand extends Command {
       })
 
     // TODO: 확률적으로 도박을 건 돈에서 2 ~ 5배로 돌려주거나, 잃기
-    // TODO: 일정 봇 내 재화이상만 걸 수 있도록 하기
+
+    if (amount < 500)
+      return await interaction.reply({
+        ephemeral: true,
+        content: '도박을 할려면 최소 500봇 내 재화가 필요해요.',
+      })
   }
 }
