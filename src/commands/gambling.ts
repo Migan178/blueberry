@@ -45,7 +45,7 @@ export default class GamblingCommand extends Command {
     if (amount > user.money)
       return await interaction.reply({
         ephemeral: true,
-        content: '현재 봇 내 재화가 도박을 건 금약보다 적어요.',
+        content: '현재 봇 내 재화가 도박을 건 금액보다 적어요.',
       })
 
     // TODO: 확률적으로 도박을 건 돈에서 2 ~ 5배로 돌려주거나, 잃기
