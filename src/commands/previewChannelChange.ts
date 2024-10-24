@@ -1,4 +1,4 @@
-import { returnReleaseChannel } from '../modules'
+import { ReleaseChannel, returnReleaseChannel } from '../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
 import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'
@@ -25,10 +25,10 @@ export default class PreviewChannelChangeCommand extends Command {
         content: '현재 이봇은 미리보기 채널변경을 지원하지 않아요.',
       })
     const CUSTOM_ID = 'blueberry$previewChange'
-    const EXPERIMENTAL = 'experimental'
-    const DEV = 'dev'
-    const PREVIEW = 'preview'
-    const RELEASE = 'release'
+    const CANARY: ReleaseChannel = 'Canary'
+    const DEV: ReleaseChannel = 'Dev'
+    const PREVIEW: ReleaseChannel = 'Preview'
+    const RELEASE: ReleaseChannel = 'Release'
     const description = '현재 채널을 {channel}로 설정해요.'
     const user = await this.container.database.user.findFirst({
       where: {
@@ -43,10 +43,10 @@ export default class PreviewChannelChangeCommand extends Command {
       embeds: [
         {
           title: `${this.container.client.user?.username}의 미리보기 채널 변경`,
-          description: `현재 ${interaction.user.username}님이 속한 채널: ${returnReleaseChannel(user.release_channel)}`,
+          description: `현재 ${interaction.user.username}님이 속한 채널: ${returnReleaseChannel(user.release_channel as ReleaseChannel)}`,
           fields: [
             {
-              name: `실험 채널`,
+              name: `카나리아 채널`,
               value:
                 '해당 채널은 다음 블루베리의 메이저 버전을 개발하거나, 실험적인 기능을 테스트하는 채널이에요. 따라서 매우 불안정할 수 있어요.',
               inline: false,
@@ -80,18 +80,18 @@ export default class PreviewChannelChangeCommand extends Command {
               customId: `${CUSTOM_ID}@${interaction.user.id}`,
               options: [
                 {
-                  label: `실험 채널`,
+                  label: `카나리아 채널`,
                   description: description.replace(
                     '{channel}',
-                    returnReleaseChannel(EXPERIMENTAL.toUpperCase()),
+                    returnReleaseChannel(CANARY),
                   ),
-                  value: `${CUSTOM_ID}-${EXPERIMENTAL}@${interaction.user.id}`,
+                  value: `${CUSTOM_ID}-${CANARY}@${interaction.user.id}`,
                 },
                 {
                   label: `개발 채널`,
                   description: description.replace(
                     '{channel}',
-                    returnReleaseChannel(DEV.toUpperCase()),
+                    returnReleaseChannel(DEV),
                   ),
                   value: `${CUSTOM_ID}-${DEV}@${interaction.user.id}`,
                 },
@@ -99,7 +99,7 @@ export default class PreviewChannelChangeCommand extends Command {
                   label: `미리보기 채널`,
                   description: description.replace(
                     '{channel}',
-                    returnReleaseChannel(PREVIEW.toUpperCase()),
+                    returnReleaseChannel(PREVIEW),
                   ),
                   value: `${CUSTOM_ID}-${PREVIEW}@${interaction.user.id}`,
                 },
@@ -107,13 +107,13 @@ export default class PreviewChannelChangeCommand extends Command {
                   label: `정식 채널`,
                   description: description.replace(
                     '{channel}',
-                    returnReleaseChannel(RELEASE.toUpperCase()),
+                    returnReleaseChannel(RELEASE),
                   ),
                   value: `${CUSTOM_ID}-${RELEASE}@${interaction.user.id}`,
                 },
                 {
                   label: '취소',
-                  description: `채널을 ${returnReleaseChannel(user.release_channel)}로 유지해요.`,
+                  description: `채널을 ${returnReleaseChannel(user.release_channel as ReleaseChannel)}로 유지해요.`,
                   value: `${CUSTOM_ID}-cancel`,
                 },
               ],

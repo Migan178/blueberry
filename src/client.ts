@@ -32,13 +32,13 @@ container.embedColors = {
 }
 
 if (release.startsWith('e')) {
-  container.channel = 'EXPERIMENTAL'
+  container.channel = 'Canary'
 } else if (release.startsWith('d')) {
-  container.channel = 'DEV'
+  container.channel = 'Dev'
 } else if (release.startsWith('p')) {
-  container.channel = 'PREVIEW'
+  container.channel = 'Preview'
 } else {
-  container.channel = 'RELEASE'
+  container.channel = 'Release'
 }
 
 export default class MuffinBot extends SapphireClient {

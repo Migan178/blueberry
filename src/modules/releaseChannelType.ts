@@ -1,16 +1,14 @@
-export type ReleaseChannel = 'EXPERIMENTAL' | 'DEV' | 'PREVIEW' | 'RELEASE'
+export type ReleaseChannel = 'Canary' | 'Dev' | 'Preview' | 'Release'
 
-export function returnReleaseChannel(channel: ReleaseChannel | string) {
+export function returnReleaseChannel(channel: ReleaseChannel) {
   switch (channel) {
-    case 'EXPERIMENTAL':
-      return '실험 채널'
-    case 'DEV':
+    case 'Canary':
+      return '카나리아 채널'
+    case 'Dev':
       return '개발 채널'
-    case 'PREVIEW':
+    case 'Preview':
       return '미리보기 채널'
-    case 'RELEASE':
+    case 'Release':
       return '정식 채널'
   }
-
-  return '정식 채널'
 }

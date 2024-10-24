@@ -1,3 +1,4 @@
+import { returnReleaseChannel } from '../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
 import type { ChatInputCommandInteraction, Message } from 'discord.js'
@@ -37,7 +38,7 @@ export default class InformationCommand extends Command {
             },
             {
               name: '채널',
-              value: `\`${this.container.channel.toLowerCase()}\``,
+              value: `\`${returnReleaseChannel(this.container.channel)}\``,
               inline: true,
             },
             {
