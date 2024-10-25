@@ -31,9 +31,9 @@ export default class GamblingCommand extends Command {
     const userId = interaction.user.id
     /** @description If value is 1, lost the coin. Else, get the coin. */
     const isLost = Math.floor(Math.random() * 3)
-    console.log(isLost)
     /** @description Multiple is 2 - 5. */
-    const multiply = BigInt(Math.floor(Math.random() * 5) + 1)
+    let multiply = BigInt(Math.floor(Math.random() * 5) + 1)
+    if (multiply === 1n) multiply++
     const user = await this.container.database.user.findFirst({
       where: {
         user_id: userId,
