@@ -9,7 +9,10 @@ export default class MessageCreateListener extends Listener {
       aliases: this.container.dokdoAliases,
       owners: [this.container.config.bot.owner_ID],
       prefix: `<@${this.container.client.user!.id}> `,
-      secrets: [process.env.DATABASE_URL!, process.env.API_OPENDICT!],
+      secrets: [
+        this.container.config.database_url,
+        this.container.config.api.opendict,
+      ],
       globalVariable: {
         container: this.container,
       },

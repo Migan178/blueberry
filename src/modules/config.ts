@@ -11,4 +11,6 @@ export default class MAAConfig {
   public readonly api = {
     opendict: process.env.API_OPENDICT!,
   }
+
+  public database_url = process.env.DATABASE_URL!
 }
