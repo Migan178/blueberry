@@ -69,6 +69,7 @@ export default class PreviewChannelChangeCommand extends Command {
               inline: false,
             },
           ],
+          color: this.container.embedColors.default,
         },
       ],
       components: [

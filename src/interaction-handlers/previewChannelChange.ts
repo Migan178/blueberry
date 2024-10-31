@@ -26,7 +26,7 @@ export default class PreviewChannelChangeInteractionHandler extends InteractionH
           {
             title: `${this.container.client.user?.username}의 미리보기 채널변경`,
             description: '채널 변경을 취소했어요.',
-            color: 0xff0000,
+            color: this.container.embedColors.fail,
           },
         ],
         components: [],
@@ -56,7 +56,7 @@ export default class PreviewChannelChangeInteractionHandler extends InteractionH
         {
           title: `${this.container.client.user?.username}의 미리보기 채널변경`,
           description: `${returnReleaseChannel(channel as ReleaseChannel)}로 미리보기 채널변경을 했어요.`,
-          color: 0x00ff00,
+          color: this.container.embedColors.success,
         },
       ],
       components: [],
