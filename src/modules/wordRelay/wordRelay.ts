@@ -1,3 +1,4 @@
+import { dueum } from '../../../js/index'
 import { OpenDictAPI } from './api'
 import type { APIResponse, Item } from './types'
 import { AxiosResponse } from 'axios'
@@ -83,9 +84,10 @@ export class WordRelay {
         } else {
           const lastWord = this._usedWords[this._usedWords.length - 1]
           const lastChar = lastWord.charAt(lastWord.length - 1)
-          if (!content.startsWith(lastChar))
+          const checkLastChar = new RegExp(`^[${lastChar}${dueum(lastChar)}]`)
+          if (!checkLastChar.test(content))
             return await message.reply(
-              '시작단어가 마지막으로 쓴 단어의 마지막 글자여야 해요.',
+              '시작단어가 마지막으로 쓴 단어의 마지막 글자이거나, 두음법칙에 맞는 글자여야해요.',
             )
         }
 

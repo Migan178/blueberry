@@ -45,6 +45,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      hangul-tools:
+        specifier: ^0.1.4
+        version: 0.1.4
       semver:
         specifier: ^7.6.3
         version: 7.6.3
@@ -730,6 +733,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  hangul-tools@0.1.4:
+    resolution: {integrity: sha512-sGIwyCTrJ6RSaTsaxwtnqkjuhZL48oKC6bv1iJ9E6qsJnut7mzQHnACU3QB0aNhoXvd/nsvGUycWsR9qkVQ4Wg==}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -1778,6 +1784,8 @@ snapshots:
   globals@15.11.0: {}
 
   graphemer@1.4.0: {}
+
+  hangul-tools@0.1.4: {}
 
   has-flag@3.0.0: {}
 

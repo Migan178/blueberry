@@ -1,5 +1,5 @@
 {
   "ext": "ts,json",
-  "exec": "tsc --sourcemap && cross-env NODE_ENV=development node --enable-source-maps dist/src",
+  "exec": "tsc --sourcemap && cross-env NODE_ENV=development node --enable-source-maps dist",
   "ignore": ["dist/**/*.*"]
 }

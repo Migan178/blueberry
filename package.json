@@ -1,8 +1,8 @@
 {
   "name": "blueberry",
-  "version": "0.0.0-hydrogen.e241031a",
+  "version": "0.0.0-hydrogen.e241118a",
   "description": "Public discord bot based Muffin-NOT-Ai",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "private": true,
   "dependencies": {
     "@prisma/client": "^5.20.0",
@@ -16,6 +16,7 @@
     "discord.js": "^14.16.3",
     "dokdo": "^1.0.1",
     "dotenv": "^16.4.5",
+    "hangul-tools": "^0.1.4",
     "semver": "^7.6.3"
   },
   "devDependencies": {
@@ -40,7 +41,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "start": "cross-env NODE_ENV=production node dist/src",
+    "start": "cross-env NODE_ENV=production node dist",
     "db:pull": "prisma db pull",
     "db:push": "prisma db push",
     "db:generate": "prisma generate"
