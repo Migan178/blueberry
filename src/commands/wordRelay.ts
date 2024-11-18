@@ -1,7 +1,7 @@
 import { WordRelay } from '../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
-import { type Message, PermissionFlagsBits } from 'discord.js'
+import { ChatInputCommandInteraction, PermissionFlagsBits } from 'discord.js'
 
 @ApplyOptions<Command.Options>({
   name: '끝말잇기',
@@ -12,14 +12,22 @@ import { type Message, PermissionFlagsBits } from 'discord.js'
   preconditions: ['IsJoined', 'IsBlocked', 'CheckChannel'],
 })
 export default class WordRelayCommand extends Command {
-  public async messageRun(msg: Message<true>) {
+  public registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(builder =>
+      builder.setName(this.name).setDescription(this.description),
+    )
+  }
+
+  public async chatInputRun(
+    interaction: ChatInputCommandInteraction<'cached'>,
+  ) {
     if (
-      !msg.guild.members.me?.permissions.has(
+      !interaction.guild.members.me?.permissions.has(
         PermissionFlagsBits.CreatePublicThreads,
       )
     )
-      return msg.reply('제게 공개 스레드 만들기 권한이 없어요.')
+      return interaction.reply('제게 공개 스레드 만들기 권한이 없어요.')
 
-    new WordRelay().startGame(msg)
+    new WordRelay().startGame(interaction)
   }
 }

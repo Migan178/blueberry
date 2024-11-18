@@ -1,7 +1,12 @@
 import { OpenDictAPI } from './api'
 import type { APIResponse, Item } from './types'
 import { AxiosResponse } from 'axios'
-import { type Message, type APIEmbed } from 'discord.js'
+import {
+  type ChatInputCommandInteraction,
+  type Message,
+  type APIEmbed,
+  ChannelType,
+} from 'discord.js'
 
 export class WordRelay {
   private _usedWords: string[] = []
@@ -12,22 +17,24 @@ export class WordRelay {
     return await this._api.vaildWord(word)
   }
 
-  public async startGame(msg: Message<true>) {
+  public async startGame(interaction: ChatInputCommandInteraction<'cached'>) {
     const TIMEOUT_PRE_START = 'timeout: pre start'
-    const userID = msg.author.id
+    const userID = interaction.user.id
     const USER_WIN = 'userWin'
     const BOT_WIN = 'botWin'
     const embed: APIEmbed = {
-      title: `${msg.author.username}의 끝말잇기`,
+      title: `${interaction.user.username}의 끝말잇기`,
       footer: {
-        text: msg.author.username,
-        icon_url: msg.author.displayAvatarURL(),
+        text: interaction.user.username,
+        icon_url: interaction.user.displayAvatarURL(),
       },
     }
 
     try {
-      const thread = await msg.startThread({
-        name: `${msg.author.username}-끝말잇기`,
+      const channel = interaction.channel
+      if (channel?.type !== ChannelType.GuildText) return
+      const thread = await channel.threads.create({
+        name: `${interaction.user.username}-끝말잇기`,
       })
 
       const embedMsg = await thread.send({
