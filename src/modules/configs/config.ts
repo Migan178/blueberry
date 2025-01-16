@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-export default class MAAConfig {
+export class Config {
   public readonly bot = {
     token: process.env.BOT_TOKEN!,
     owner_ID: process.env.BOT_OWNER_ID!,
