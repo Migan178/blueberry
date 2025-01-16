@@ -1,3 +1,4 @@
+import { Category, categoryToHangul } from '../../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args, Command } from '@sapphire/framework'
 import {
@@ -74,9 +75,8 @@ export default class HelpCommand extends Command {
         ],
       })
     } else {
-      const { name, description, detailedDescription } = this.container.stores
-        .get('commands')
-        .get(commandName)!
+      const { name, description, detailedDescription, fullCategory } =
+        this.container.stores.get('commands').get(commandName)!
       if (typeof detailedDescription === 'string') return
 
       await ctx.reply({
@@ -93,6 +93,11 @@ export default class HelpCommand extends Command {
               {
                 name: '사용법',
                 value: `\`${detailedDescription.usage}\``,
+                inline: true,
+              },
+              {
+                name: '카테고리',
+                value: categoryToHangul(fullCategory[0] as Category),
                 inline: true,
               },
               detailedDescription.examples

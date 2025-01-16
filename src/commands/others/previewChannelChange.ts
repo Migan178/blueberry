@@ -1,4 +1,4 @@
-import { ReleaseChannel, returnReleaseChannel } from '../modules'
+import { ReleaseChannel, returnReleaseChannel } from '../../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
 import { type ChatInputCommandInteraction, ComponentType } from 'discord.js'

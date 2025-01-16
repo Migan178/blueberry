@@ -1,4 +1,4 @@
-import { WordRelay } from '../modules'
+import { WordRelay } from '../../modules'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Command } from '@sapphire/framework'
 import { ChatInputCommandInteraction, PermissionFlagsBits } from 'discord.js'
