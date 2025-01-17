@@ -1,13 +1,11 @@
 // import { version } from '../package.json'
-import { Config, NODE_ENV, ReleaseChannel } from './modules'
+import { Config, NODE_ENV, ReleaseChannel, version } from './modules'
 import { PrismaClient } from '@prisma/client'
 import { SapphireClient, container, LogLevel } from '@sapphire/framework'
 import { GatewayIntentBits, Partials } from 'discord.js'
 import semver from 'semver'
 
 const config = new Config()
-
-const version = '0.0.0-hydrogen.241118a'
 
 const release = version
   .slice((semver.coerce(version)?.toString() + '-').length)
