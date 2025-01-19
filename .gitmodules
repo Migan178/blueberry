@@ -1,0 +1,3 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/Migan-Studio/blueberry-api.git
