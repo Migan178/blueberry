@@ -30,6 +30,12 @@ importers:
       '@sapphire/utilities':
         specifier: ^3.17.0
         version: 3.17.0
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.0
+      '@types/ws':
+        specifier: ^8.5.11
+        version: 8.5.12
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -45,12 +51,18 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      express:
+        specifier: ^4.21.2
+        version: 4.21.2
       hangul-tools:
         specifier: ^0.1.4
         version: 0.1.4
       semver:
         specifier: ^7.6.3
         version: 7.6.3
+      ws:
+        specifier: 8.18.0
+        version: 8.18.0
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.1.0

@@ -11,13 +11,17 @@
     "@sapphire/framework": "^5.2.1",
     "@sapphire/pieces": "^4.3.1",
     "@sapphire/utilities": "^3.17.0",
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.11",
     "axios": "^1.7.7",
     "discord-api-types": "^0.37.101",
     "discord.js": "^14.16.3",
     "dokdo": "^1.0.1",
     "dotenv": "^16.4.5",
+    "express": "^4.21.2",
     "hangul-tools": "^0.1.4",
-    "semver": "^7.6.3"
+    "semver": "^7.6.3",
+    "ws": "8.18.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
