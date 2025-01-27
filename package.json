@@ -21,6 +21,8 @@
     "express": "^4.21.2",
     "hangul-tools": "^0.1.4",
     "semver": "^7.6.3",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "ws": "8.18.0"
   },
   "devDependencies": {
