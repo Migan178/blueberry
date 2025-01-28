@@ -15,6 +15,7 @@
 //   Config,
 //   noPerm,
 // }
+export * from './api'
 export * from './configs'
 export * from './utils'
 export * from './wordRelay'
